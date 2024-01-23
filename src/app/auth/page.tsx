@@ -1,22 +1,19 @@
 'use client';
 
 import { useState } from 'react';
-import InputField from '../../components/base/input-field';
+import { useRouter } from 'next/navigation';
+import UserApi from '../../services/api/userApi';
 import { useCookies } from 'next-client-cookies';
 import Button from '../../components/base/button';
 import { UserProps } from '../../components/base/post';
-import UserApi from '../../services/api/userApi';
-import { useRouter } from 'next/navigation';
+import InputField from '../../components/base/input-field';
 
-const AuthPage
- = () => {
+const AuthPage = () => {
     const { getUser } = UserApi;
     const router = useRouter();
 
-    const [authUser, setAuthUser] = useState<UserProps>();
+    const [_authUser, setAuthUser] = useState<UserProps>();
     const cookies = useCookies();
-
-    const authCookieValue = cookies.get('auth-id');
 
     const handleLogout = () => {
         cookies.remove('auth-id');
@@ -37,7 +34,7 @@ const AuthPage
             setAuthUser(data);
         });
 
-        router.push('/')
+        router.push('/');
     };
 
     return (
@@ -62,5 +59,4 @@ const AuthPage
     );
 };
 
-export default AuthPage
-;
+export default AuthPage;

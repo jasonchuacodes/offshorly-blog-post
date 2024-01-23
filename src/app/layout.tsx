@@ -1,10 +1,8 @@
+import './globals.css';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import './globals.css';
 import ReactQueryProvider from './ReactQueryProvider';
 import LinkButton from '../components/base/link-button';
-import { useEffect } from 'react';
-import { useCookies } from 'next-client-cookies';
 
 const inter = Inter({ subsets: ['latin'] });
 

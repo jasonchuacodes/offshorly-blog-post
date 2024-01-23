@@ -1,6 +1,6 @@
-import UserApi from '../../services/api/userApi';
 import Button from '../base/button';
 import { UserProps } from '../base/post';
+import UserApi from '../../services/api/userApi';
 
 function UserCard(props: UserProps) {
     const { id, firstName, lastName, refetch } = props;

@@ -1,9 +1,9 @@
 'use client';
 
-import { useEffect, useState } from 'react';
-import UserApi from '../../services/api/userApi';
-import { useCookies } from 'next-client-cookies';
 import { UserProps } from '../base/post';
+import { useEffect, useState } from 'react';
+import { useCookies } from 'next-client-cookies';
+import UserApi from '../../services/api/userApi';
 
 const WelcomeBanner = () => {
     const { getUser } = UserApi;

@@ -1,10 +1,10 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { useQuery } from '@tanstack/react-query';
 import PostApi from '../../../services/api/postApi';
-import Post, { PostDetailProps } from '../../../components/base/post';
 import Comment from '../../../components/base/comment';
+import Post, { PostDetailProps } from '../../../components/base/post';
 
 
 const PostPage = ({ params }: { params: { id: string } }) => {

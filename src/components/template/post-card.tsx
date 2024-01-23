@@ -1,12 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import Comment from '../base/comment';
-import Post, { PostDetailProps } from '../base/post';
-import Button from '../base/button';
-import PostApi from '../../services/api/postApi';
 import { useState } from 'react';
+import Button from '../base/button';
+import Comment from '../base/comment';
 import InputField from '../base/input-field';
+import PostApi from '../../services/api/postApi';
+import Post, { PostDetailProps } from '../base/post';
 
 function PostCard(props: PostDetailProps) {
     const [isOpenModal, setIsOpenModal] = useState<boolean>(false);

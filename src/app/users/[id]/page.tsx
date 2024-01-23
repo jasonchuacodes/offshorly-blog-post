@@ -1,10 +1,10 @@
 'use client';
 
-import { useQuery } from '@tanstack/react-query';
 import React from 'react';
+import { useQuery } from '@tanstack/react-query';
 import UserApi, { User } from '../../../services/api/userApi';
-import PostInputField from '../../../components/template/post-input-field';
 import PostCard from '../../../components/template/post-card';
+import PostInputField from '../../../components/template/post-input-field';
 
 const UserPage = ({ params }: { params: { id: string } }) => {
     const { id } = params;

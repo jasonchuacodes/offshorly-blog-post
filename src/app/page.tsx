@@ -1,12 +1,12 @@
 'use client';
 
 import React from 'react';
+import PostApi from '../services/api/postApi';
 import { useQuery } from '@tanstack/react-query';
 import PostCard from '../components/template/post-card';
-import PostApi from '../services/api/postApi';
 import { PostDetailProps } from '../components/base/post';
-import PostInputField from '../components/template/post-input-field';
 import WelcomeBanner from '../components/template/welcome-banner';
+import PostInputField from '../components/template/post-input-field';
 
 const HomePage = () => {
     const { getPosts } = PostApi;

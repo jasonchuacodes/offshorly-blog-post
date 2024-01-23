@@ -1,4 +1,3 @@
-import { error } from 'console';
 import instance from '../axios';
 import { PostDetailProps, UserProps } from '../../components/base/post';
 import { CommentProps } from '../../components/base/comment';

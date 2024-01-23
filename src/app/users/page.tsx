@@ -1,9 +1,8 @@
 'use client';
 
 import { useQuery } from '@tanstack/react-query';
-import UserApi, { User } from '../../services/api/userApi';
 import UserCard from '../../components/template/user-card';
-import Link from 'next/link';
+import UserApi, { User } from '../../services/api/userApi';
 
 const UsersPage = () => {
     const { getUsers } = UserApi;

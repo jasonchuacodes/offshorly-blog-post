@@ -1,5 +1,3 @@
-'use client';
-
 type TextAreaProps = {
     value: string;
     handleTextareaChange: any;
