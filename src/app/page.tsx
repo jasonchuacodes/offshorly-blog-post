@@ -7,6 +7,7 @@ import { posts } from '../data/posts';
 import PostApi, { Post } from '../services/api/postApi';
 import { PostDetailProps } from '../components/base/post';
 import AuthField from '../components/template/auth-field';
+import PostInputField from '../components/template/post-input-field';
 
 const HomePage = () => {
     const { getPosts } = PostApi;
@@ -34,6 +35,8 @@ const HomePage = () => {
             <h1 className="font-bold text-3xl">OFFSHORLY | BlogPost</h1>
             <AuthField />
             {/* PostsContainer */}
+            {/* PostsInputField */}
+            <PostInputField label="create post" />
             <div className="flex flex-col w-full space-y-4">
                 {/* Posts */}
                 <h4 className="font-bold text-xl uppercase">POSTS</h4>
@@ -47,9 +50,6 @@ const HomePage = () => {
                         />
                     );
                 })}
-                {/* {posts.map((post, index) => {
-                    return <PostCard key={index} />;
-                })} */}
             </div>
         </>
     );

@@ -3,31 +3,29 @@ import Button from '../base/button';
 import InputField from '../base/input-field';
 import useLocalStorage from '../../utils/useLocalStorage';
 
-const WelcomeBanner = () => {
-    return (
-        <h4 className="font-bold text-xl uppercase">Welcome, TSET</h4>
-    );
-};
-
 const AuthField = () => {
     const [localStorageValue, setLocalStorageValue] = useLocalStorage(
-        'auth-user',
+        'authId',
         ''
     );
-    const [authUser, setAuthUser] = useState<string>('');
+    const [authId, setAuthId] = useState<string>('');
 
     const handleChange = (e: any) => {
         const { value } = e.target;
-        setAuthUser(value);
+        setAuthId(value);
     };
 
     const handleSubmit = (e: any) => {
         e.preventDefault();
-        setLocalStorageValue(authUser);
+        setLocalStorageValue(authId);
     };
 
     if (localStorageValue !== '') {
-        return <WelcomeBanner />;
+        return (
+            <h4 className="font-bold text-xl uppercase">
+                Welcome, USER ID: {localStorageValue}
+            </h4>
+        );
     }
 
     return (
