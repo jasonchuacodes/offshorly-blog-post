@@ -1,9 +1,8 @@
 'use client';
 
-import {
-    useQuery,
-} from '@tanstack/react-query';
+import { useQuery } from '@tanstack/react-query';
 import UserApi, { User } from '../../services/api/userApi';
+import UserCard from '../../components/template/user-card';
 
 const UsersPage = () => {
     const { getUsers } = UserApi;
@@ -18,9 +17,19 @@ const UsersPage = () => {
     }
     return (
         <>
-            {users.map((user) => {
-                return <div key={user.id}>{user.firstName}</div>;
-            })}
+            <h4 className="font-bold text-xl uppercase">list of users</h4>
+            <div className="flex flex-col space-y-2 w-full justify-center items-center">
+                {users.map((user) => {
+                    return (
+                        <UserCard
+                            key={user.id}
+                            id={user.id}
+                            firstName={user.firstName}
+                            lastName={user.lastName}
+                        />
+                    );
+                })}
+            </div>
         </>
     );
 };

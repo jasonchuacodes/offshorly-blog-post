@@ -1,7 +1,7 @@
 type ButtonProps = {
     label: string;
     className?: string;
-    onClick: () => void;
+    onClick: (e:any) => void;
 }
 
 function Button(props: ButtonProps) {

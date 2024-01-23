@@ -6,6 +6,7 @@ import PostCard from '../components/template/post-card';
 import { posts } from '../data/posts';
 import PostApi, { Post } from '../services/api/postApi';
 import { PostDetailProps } from '../components/base/post';
+import AuthField from '../components/template/auth-field';
 
 const HomePage = () => {
     const { getPosts } = PostApi;
@@ -28,13 +29,14 @@ const HomePage = () => {
     }
 
     return (
-        <main className="flex flex-col items-center w-full max-w-[640px] py-16 space-y-8 mb-10">
+        <>
             {/* Title */}
             <h1 className="font-bold text-3xl">OFFSHORLY | BlogPost</h1>
-
+            <AuthField />
             {/* PostsContainer */}
             <div className="flex flex-col w-full space-y-4">
                 {/* Posts */}
+                <h4 className="font-bold text-xl uppercase">POSTS</h4>
                 {posts.map(({ author, post, comments }, index) => {
                     return (
                         <PostCard
@@ -49,7 +51,7 @@ const HomePage = () => {
                     return <PostCard key={index} />;
                 })} */}
             </div>
-        </main>
+        </>
     );
 };
 
