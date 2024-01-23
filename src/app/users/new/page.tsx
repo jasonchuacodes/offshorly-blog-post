@@ -33,7 +33,7 @@ const CreateUserPage = () => {
     };
 
     return (
-        <>
+        <>   
             <h4 className="font-bold text-xl">CREATE USER</h4>
             <form className="flex flex-col w-1/2 space-y-2">
                 <InputField

@@ -3,11 +3,10 @@
 import React from 'react';
 import { useQuery } from '@tanstack/react-query';
 import PostCard from '../components/template/post-card';
-import { posts } from '../data/posts';
-import PostApi, { Post } from '../services/api/postApi';
+import PostApi from '../services/api/postApi';
 import { PostDetailProps } from '../components/base/post';
-import AuthField from '../components/template/auth-field';
 import PostInputField from '../components/template/post-input-field';
+import WelcomeBanner from '../components/template/welcome-banner';
 
 const HomePage = () => {
     const { getPosts } = PostApi;
@@ -33,8 +32,8 @@ const HomePage = () => {
     return (
         <>
             {/* Title */}
-            <h1 className="font-bold text-3xl">OFFSHORLY | BlogPost</h1>
-            <AuthField />
+            <h1 className="font-bold pb-20 text-3xl">OFFSHORLY</h1>
+            <WelcomeBanner />
 
             {/* PostsContainer */}
             <PostInputField refetch={refetch} label="create post" />

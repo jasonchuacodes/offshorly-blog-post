@@ -16,7 +16,7 @@ const PostApi = {
         const { data } = await instance.get('/posts');
         return data;
     },
-    getPost: async (id: number) => {
+    getPost: async (id: number): Promise<PostDetailProps> => {
         try {
             const { data } = await instance.get(`/posts/${id}`);
             return data;

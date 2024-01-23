@@ -21,7 +21,7 @@ function InputField({
                 name={name}
                 type={type}
                 id="input-field"
-                className={`flex flex-1 min-h-16 px-4 border border-slate-500 ${className}`}
+                className={`flex flex-1 min-h-10 px-4 border border-slate-500 ${className}`}
             />
         </>
     );
