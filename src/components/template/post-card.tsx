@@ -29,8 +29,6 @@ function PostCard(props: PostCardProps) {
                         );
                     })}
                 </div>
-                {/* CommentInputField */}
-                <CommentInputField />
             </div>
         </div>
     );

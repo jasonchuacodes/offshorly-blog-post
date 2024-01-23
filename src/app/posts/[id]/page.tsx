@@ -5,6 +5,7 @@ import React from 'react';
 import PostApi, { Post } from '../../../services/api/postApi';
 
 const PostPage = ({ params }: { params: { id: string } }) => {
+    const { id } = params;
     const { getPost } = PostApi;
 
     const {
@@ -13,7 +14,7 @@ const PostPage = ({ params }: { params: { id: string } }) => {
         error,
     } = useQuery<Post>({
         queryKey: ['post'],
-        queryFn: () => getPost(Number(params.id)),
+        queryFn: () => getPost(Number(id)),
     });
 
     if (error) {

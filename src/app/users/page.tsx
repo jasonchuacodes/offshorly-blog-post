@@ -5,7 +5,7 @@ import {
 } from '@tanstack/react-query';
 import UserApi, { User } from '../../services/api/userApi';
 
-const UserPage = () => {
+const UsersPage = () => {
     const { getUsers } = UserApi;
 
     const { data: users, isLoading } = useQuery<User[]>({
@@ -25,4 +25,4 @@ const UserPage = () => {
     );
 };
 
-export default UserPage;
+export default UsersPage;

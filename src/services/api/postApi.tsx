@@ -19,7 +19,7 @@ const PostApi = {
             const { data } = await instance.get(`/posts/${id}`);
             return data;
         } catch (error: any) {
-            throw new Error('failed')
+            throw new Error('failed to fetch post')
         }
     },
 };
