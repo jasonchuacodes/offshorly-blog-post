@@ -18,7 +18,7 @@ const PostPage = ({ params }: { params: { id: string } }) => {
     });
 
     if (error) {
-        return <div>ERROR FETCHING POSTS</div>;
+        return <div>ERROR FETCHING POST</div>;
     }
 
     if (isLoading || !post) {

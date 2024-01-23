@@ -7,14 +7,14 @@ export type UserProps = {
 };
 
 export type PostDetailProps = {
-    user: UserProps;
+    author: UserProps;
     post: string;
     comments?: CommentProps[];
 };
 
-function PostDetail(props: PostDetailProps) {
-    const { user, post } = props;
-    const { firstName, lastName } = user;
+function Post(props: PostDetailProps) {
+    const { author, post } = props;
+    const { firstName, lastName } = author;
     
     return (
         <div className="flex flex-col space-y-1 text-lg">
@@ -26,4 +26,4 @@ function PostDetail(props: PostDetailProps) {
     );
 }
 
-export default PostDetail;
+export default Post;
