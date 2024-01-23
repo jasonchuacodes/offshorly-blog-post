@@ -1,9 +1,11 @@
 import instance from '../axios';
+import { Post } from './postApi';
 
 export type User = {
     id: number;
     firstName: string;
     lastName: string;
+    posts: Post[];
 };
 
 const UserApi = {
@@ -16,7 +18,22 @@ const UserApi = {
             const { data } = await instance.get(`/users/${id}`);
             return data;
         } catch (error: any) {
-            throw new Error('failed to fetch user')
+            throw new Error('failed to fetch user');
+        }
+    },
+    creatUser: async (params: {
+        firstName: string;
+        lastName: string;
+    }): Promise<User> => {
+        try {
+            const { data } = await instance.post('/users', params);
+            if (data) {
+                alert('successfully created a user')
+            }
+
+            return data;
+        } catch (error: any) {
+            throw new Error('failed to create user');
         }
     },
 };

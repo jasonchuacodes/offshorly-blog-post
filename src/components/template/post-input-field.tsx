@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import Button from '../base/button';
 import TextArea from '../base/text-area';
 
-const PostInputField = () => {
+const PostInputField = ({label = 'submit'}: {label?:string}) => {
     const [value, setValue] = useState<string>('');
 
     const handleSubmit = () => {
@@ -26,7 +26,7 @@ const PostInputField = () => {
             />
             <Button
                 onClick={handleSubmit}
-                label="Submit"
+                label={label}
                 className="max-w-full py-2 font-bold text-lg uppercase"
             />
         </div>
