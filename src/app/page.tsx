@@ -42,7 +42,7 @@ const HomePage = () => {
             <div className="flex flex-col w-full space-y-4">
                 {/* Posts */}
                 <h4 className="font-bold text-xl uppercase">POSTS</h4>
-                {posts.length > 1
+                {posts.length > 0
                     ? posts.map(({ id, author, post, comments }, index) => {
                           return (
                               <PostCard

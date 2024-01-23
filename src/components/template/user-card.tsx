@@ -23,7 +23,7 @@ function UserCard(props: UserProps) {
                     {firstName} {lastName}
                 </div>
             </div>
-            <Button onClick={handleRemove} label="X" />
+            <Button onClick={handleRemove} label="Delete" />
         </div>
     );
 }

@@ -76,19 +76,21 @@ function PostCard(props: PostDetailProps) {
                     </div>
                 </div>
 
-                <div className="flex items-center justify-center px-4 py-2 border border-1 border-black/20 cursor-pointer">
-                    <Link href={`/posts/${id}`}>View</Link>
+                <div className="flex space-x-2">
+                    <div className="flex items-center justify-center px-4 py-2 border border-1 border-slate-500 bg-white cursor-pointer">
+                        <Link href={`/posts/${id}`}>View</Link>
+                    </div>
+                    <Button
+                        onClick={openEditModal}
+                        label="Edit"
+                        className="flex items-center justify-center px-4 py-2 border border-1 border-slate-500 cursor-pointer"
+                    />
+                    <Button
+                        onClick={handleDelete}
+                        label="Delete"
+                        className="flex items-center justify-center px-4 py-2 border border-1 border-slate-500 cursor-pointer"
+                    />
                 </div>
-                <Button
-                    onClick={openEditModal}
-                    label="Edit"
-                    className="flex items-center justify-center px-4 py-2 border border-1 border-slate-500 cursor-pointer"
-                />
-                <Button
-                    onClick={handleDelete}
-                    label="Delete"
-                    className="flex items-center justify-center px-4 py-2 border border-1 border-slate-700 cursor-pointer"
-                />
             </div>
             {isOpenModal ? (
                 <form action="submit" className="flex flex-col space-y-2">
