@@ -1,34 +1,28 @@
-"use client";
+'use client';
 
-import Comment, { CommentProps } from "../base/comment";
-import PostDetail, { PostDetailProps } from "../base/post";
-import CommentInputField from "./comment-input-field";
+import Comment from '../base/comment';
+import Post, { PostDetailProps } from '../base/post';
 
-type PostCardProps = {
-    post: PostDetailProps;
-};
-
-function PostCard(props: PostCardProps) {
-    const { post } = props;
+function PostCard(props: PostDetailProps) {
+    const { post, author, comments } = props;
 
     return (
         <div className="flex flex-col space-y-1 p-4 border border-slate-400 bg-white/40">
             {/* PostDetail */}
-            <PostDetail user={post.user} post={post.post} />
+            <Post author={author} post={post} />
 
             {/* PostComments */}
             <div className="px-4 space-y-2">
-                <div className="px-4 py-2 space-y-2 border-l-2 border-slate-400">
-                    {post.comments?.map(({ user, comment }, index) => {
-                        return (
-                            <Comment
-                                key={index}
-                                user={user}
-                                comment={comment}
-                            />
-                        );
-                    })}
-                </div>
+                {comments?.map(({ comment }, index) => {
+                    return (
+                        <div
+                            key={index}
+                            className="px-4 py-2 space-y-2 border-l-2 border-slate-400"
+                        >
+                            <Comment author={author} comment={comment} />
+                        </div>
+                    );
+                })}
             </div>
         </div>
     );

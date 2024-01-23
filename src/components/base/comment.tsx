@@ -1,13 +1,13 @@
 import { UserProps } from "./post";
 
 export type CommentProps = {
-    user: UserProps;
+    author: UserProps;
     comment: string;
 };
 
 function Comment(props: CommentProps) {
-    const { user, comment } = props;
-    const { firstName, lastName } = user;
+    const { author, comment } = props;
+    const { firstName, lastName } = author;
 
     return (
         <div className="flex flex-col text-sm">

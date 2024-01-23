@@ -1,6 +1,7 @@
 import { error } from 'console';
 import instance from '../axios';
 import { Comment } from './commentApi';
+import { PostDetailProps } from '../../components/base/post';
 
 export type Post = {
     id: number;
@@ -10,7 +11,7 @@ export type Post = {
 };
 
 const PostApi = {
-    getPosts: async (): Promise<Post[]> => {
+    getPosts: async (): Promise<PostDetailProps[]> => {
         const { data } = await instance.get('/posts');
         return data;
     },
