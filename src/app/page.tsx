@@ -1,12 +1,11 @@
 'use client';
 
 import React from 'react';
+import PostApi from '../services/api/postApi';
 import { useQuery } from '@tanstack/react-query';
 import PostCard from '../components/template/post-card';
-import { posts } from '../data/posts';
-import PostApi, { Post } from '../services/api/postApi';
 import { PostDetailProps } from '../components/base/post';
-import AuthField from '../components/template/auth-field';
+import WelcomeBanner from '../components/template/welcome-banner';
 import PostInputField from '../components/template/post-input-field';
 
 const HomePage = () => {
@@ -33,8 +32,8 @@ const HomePage = () => {
     return (
         <>
             {/* Title */}
-            <h1 className="font-bold text-3xl">OFFSHORLY | BlogPost</h1>
-            <AuthField />
+            <h1 className="font-bold pb-20 text-3xl">OFFSHORLY</h1>
+            <WelcomeBanner />
 
             {/* PostsContainer */}
             <PostInputField refetch={refetch} label="create post" />
@@ -42,7 +41,7 @@ const HomePage = () => {
             <div className="flex flex-col w-full space-y-4">
                 {/* Posts */}
                 <h4 className="font-bold text-xl uppercase">POSTS</h4>
-                {posts.length > 1
+                {posts.length > 0
                     ? posts.map(({ id, author, post, comments }, index) => {
                           return (
                               <PostCard

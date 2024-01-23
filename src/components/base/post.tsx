@@ -17,12 +17,11 @@ export type PostDetailProps = {
 
 function Post(props: PostDetailProps) {
     const { author, post } = props;
-    const { firstName, lastName } = author;
     
     return (
         <div className="flex flex-col space-y-1 text-lg">
             <div className="font-bold">
-                {firstName} {lastName}
+                {author?.firstName} {author?.lastName}
             </div>
             <div>{post}</div> 
         </div>

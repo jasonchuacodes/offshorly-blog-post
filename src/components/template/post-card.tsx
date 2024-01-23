@@ -1,12 +1,12 @@
 'use client';
 
 import Link from 'next/link';
-import Comment from '../base/comment';
-import Post, { PostDetailProps } from '../base/post';
-import Button from '../base/button';
-import PostApi from '../../services/api/postApi';
 import { useState } from 'react';
+import Button from '../base/button';
+import Comment from '../base/comment';
 import InputField from '../base/input-field';
+import PostApi from '../../services/api/postApi';
+import Post, { PostDetailProps } from '../base/post';
 
 function PostCard(props: PostDetailProps) {
     const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
@@ -35,7 +35,7 @@ function PostCard(props: PostDetailProps) {
 
     const handleEditSubmit = (e: any) => {
         e.preventDefault();
-        
+
         editPost({ id, post: editValue });
         alert('Successfully edited post');
 
@@ -43,7 +43,7 @@ function PostCard(props: PostDetailProps) {
             refetch();
         }
 
-        setIsOpenModal(false)
+        setIsOpenModal(false);
     };
 
     const handleEditCancel = (e: any) => {
@@ -52,8 +52,10 @@ function PostCard(props: PostDetailProps) {
     };
 
     return (
-        <div className="flex flex-col space-y-1">
-            <div className="flex w-full border p-4 border-slate-400 bg-white/40">
+        <>
+        {/* Container */}
+        <div className="flex flex-col space-y-1 min-h-24">
+            <div className="flex h-full w-full border p-4 border-slate-400 bg-white/40">
                 <div className="flex flex-col w-full space-y-1 ">
                     {/* PostDetail */}
                     <Post id={id} author={author} post={post} />
@@ -76,19 +78,21 @@ function PostCard(props: PostDetailProps) {
                     </div>
                 </div>
 
-                <div className="flex items-center justify-center px-4 py-2 border border-1 border-black/20 cursor-pointer">
-                    <Link href={`/posts/${id}`}>View</Link>
+                <div className="flex space-x-2">
+                    <div className="flex items-center justify-center h-10 w-20 border border-1 border-slate-500 bg-white cursor-pointer">
+                        <Link href={`/posts/${id}`}>View</Link>
+                    </div>
+                    <Button
+                        onClick={openEditModal}
+                        label="Edit"
+                        className="flex items-center justify-centerh h-10 border border-1 border-slate-500 cursor-pointer"
+                    />
+                    <Button
+                        onClick={handleDelete}
+                        label="Delete"
+                        className="flex items-center justify-centerh h-10 border border-1 border-slate-500 cursor-pointer"
+                    />
                 </div>
-                <Button
-                    onClick={openEditModal}
-                    label="Edit"
-                    className="flex items-center justify-center px-4 py-2 border border-1 border-slate-500 cursor-pointer"
-                />
-                <Button
-                    onClick={handleDelete}
-                    label="Delete"
-                    className="flex items-center justify-center px-4 py-2 border border-1 border-slate-700 cursor-pointer"
-                />
             </div>
             {isOpenModal ? (
                 <form action="submit" className="flex flex-col space-y-2">
@@ -106,6 +110,7 @@ function PostCard(props: PostDetailProps) {
                 ''
             )}
         </div>
+        </>
     );
 }
 

@@ -1,9 +1,9 @@
 'use client';
 
-import UserApi from '../../../services/api/userApi';
-import InputField from '../../../components/base/input-field';
-import Button from '../../../components/base/button';
 import React, { useState } from 'react';
+import UserApi from '../../../services/api/userApi';
+import Button from '../../../components/base/button';
+import InputField from '../../../components/base/input-field';
 
 import { useRouter } from 'next/navigation';
 
@@ -33,7 +33,7 @@ const CreateUserPage = () => {
     };
 
     return (
-        <>
+        <>   
             <h4 className="font-bold text-xl">CREATE USER</h4>
             <form className="flex flex-col w-1/2 space-y-2">
                 <InputField
