@@ -28,12 +28,19 @@ const UserApi = {
         try {
             const { data } = await instance.post('/users', params);
             if (data) {
-                alert('successfully created a user')
+                alert('successfully created a user');
             }
 
             return data;
         } catch (error: any) {
             throw new Error('failed to create user');
+        }
+    },
+    deleteUser: async (id: number) => {
+        try {
+            await instance.delete(`/users/${id}`);
+        } catch(e) {
+            throw new Error('failed to remove user')
         }
     },
 };

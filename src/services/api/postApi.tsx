@@ -24,7 +24,10 @@ const PostApi = {
             throw new Error('failed to fetch post');
         }
     },
-    creatPost: async (params: {}): Promise<Post> => {
+    createPost: async (params: {
+        authorId: number;
+        post: string;
+    }): Promise<Post> => {
         try {
             const { data } = await instance.post('/posts', params);
             if (data) {
@@ -34,6 +37,21 @@ const PostApi = {
             return data;
         } catch (error: any) {
             throw new Error('failed to create post');
+        }
+    },
+    editPost: async (params: { id: number; post: string }) => {
+        const { id, post } = params;
+        try {
+            await instance.put(`/posts/${id}`, {post});
+        } catch (error: any) {
+            throw new Error('failed to update post');
+        }
+    },
+    removePost: async (id: number) => {
+        try {
+            await instance.delete(`/posts/${id}`);
+        } catch (e) {
+            throw new Error('failed to delete post');
         }
     },
 };

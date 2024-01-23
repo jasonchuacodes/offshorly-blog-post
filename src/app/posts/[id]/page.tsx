@@ -26,14 +26,19 @@ const PostPage = ({ params }: { params: { id: string } }) => {
     }
 
     return (
-        <>
-            <div>{post.post}</div>
-            <div>
-                {post.comments?.map(({ comment }, index) => {
-                    return <div key={index}>{comment}</div>;
-                })}
+        <div className="flex flex-col w-full space-y-2">
+            <div className="text-lg font-bold">
+                Author: {post.author?.firstName}
             </div>
-        </>
+            <div className="flex flex-col w-full space-y-4 p-4 border border-1 border-slate-500">
+                <div className="text-base">Post: {post.post}</div>
+                <div>
+                    {post.comments?.map(({ comment }, index) => {
+                        return <div key={index}>{comment}</div>;
+                    })}
+                </div>
+            </div>
+        </div>
     );
 };
 

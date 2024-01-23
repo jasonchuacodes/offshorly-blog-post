@@ -4,12 +4,15 @@ export type UserProps = {
     id: number;
     firstName: string;
     lastName: string;
+    refetch?: () => void
 };
 
 export type PostDetailProps = {
+    id: number;
     author: UserProps;
     post: string;
     comments?: CommentProps[];
+    refetch?: () => void
 };
 
 function Post(props: PostDetailProps) {

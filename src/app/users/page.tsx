@@ -4,12 +4,11 @@ import { useQuery } from '@tanstack/react-query';
 import UserApi, { User } from '../../services/api/userApi';
 import UserCard from '../../components/template/user-card';
 import Link from 'next/link';
-import PostInputField from '../../components/template/post-input-field';
 
 const UsersPage = () => {
     const { getUsers } = UserApi;
 
-    const { data: users, isLoading } = useQuery<User[]>({
+    const { data: users, isLoading, refetch } = useQuery<User[]>({
         queryKey: ['users'],
         queryFn: getUsers,
     });
@@ -31,6 +30,7 @@ const UsersPage = () => {
                             id={user.id}
                             firstName={user.firstName}
                             lastName={user.lastName}
+                            refetch={refetch}
                         />
                     );
                 })}
