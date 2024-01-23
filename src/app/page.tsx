@@ -16,6 +16,7 @@ const HomePage = () => {
         data: posts,
         isLoading,
         error,
+        refetch,
     } = useQuery<PostDetailProps[]>({
         queryKey: ['post'],
         queryFn: () => getPosts(),
@@ -34,22 +35,27 @@ const HomePage = () => {
             {/* Title */}
             <h1 className="font-bold text-3xl">OFFSHORLY | BlogPost</h1>
             <AuthField />
+
             {/* PostsContainer */}
-            {/* PostsInputField */}
-            <PostInputField label="create post" />
+            <PostInputField refetch={refetch} label="create post" />
+
             <div className="flex flex-col w-full space-y-4">
                 {/* Posts */}
                 <h4 className="font-bold text-xl uppercase">POSTS</h4>
-                {posts.map(({ author, post, comments }, index) => {
-                    return (
-                        <PostCard
-                            key={index}
-                            author={author}
-                            post={post}
-                            comments={comments}
-                        />
-                    );
-                })}
+                {posts.length > 1
+                    ? posts.map(({ id, author, post, comments }, index) => {
+                          return (
+                              <PostCard
+                                  id={id}
+                                  key={index}
+                                  author={author}
+                                  post={post}
+                                  comments={comments}
+                                  refetch={refetch}
+                              />
+                          );
+                      })
+                    : ''}
             </div>
         </>
     );

@@ -1,11 +1,13 @@
 function InputField({
     name,
     label,
+    type = 'string',
     className,
     handleChange,
 }: {
     name: string;
-    label: string;
+    type?: string;
+    label?: string;
     className?: string;
     handleChange: (e: any) => void;
 }) {
@@ -17,7 +19,7 @@ function InputField({
             <input
                 onChange={handleChange}
                 name={name}
-                type="text"
+                type={type}
                 id="input-field"
                 className={`flex flex-1 min-h-16 px-4 border border-slate-500 ${className}`}
             />

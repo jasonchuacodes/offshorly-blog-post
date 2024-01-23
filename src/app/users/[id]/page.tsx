@@ -34,10 +34,11 @@ const UserPage = ({ params }: { params: { id: string } }) => {
             </h4>
             <PostInputField label="create a post" />
             <div className='flex flex-col space-y-2'>
-                {user.posts?.map(({ post, comments }, index) => {
+                {user.posts?.map(({ id, post, comments }, index) => {
                     return (
                         <PostCard
                             key={index}
+                            id={id}
                             author={user}
                             post={post}
                             comments={comments}

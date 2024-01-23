@@ -1,39 +1,47 @@
+'use client';
+
 import { useState } from 'react';
 import Button from '../base/button';
 import InputField from '../base/input-field';
-import useLocalStorage from '../../utils/useLocalStorage';
+import { useCookies } from 'next-client-cookies';
 
 const AuthField = () => {
-    const [localStorageValue, setLocalStorageValue] = useLocalStorage(
-        'authId',
-        ''
-    );
     const [authId, setAuthId] = useState<string>('');
+    const cookies = useCookies();
+
+    const authCookieValue = cookies.get('auth-id');
 
     const handleChange = (e: any) => {
         const { value } = e.target;
         setAuthId(value);
     };
 
+    const handleLogout = () => {
+        cookies.remove('auth-id')
+    }
+
     const handleSubmit = (e: any) => {
         e.preventDefault();
-        setLocalStorageValue(authId);
+        cookies.set('auth-id', authId);
     };
 
-    if (localStorageValue !== '') {
+    if (authCookieValue) {
         return (
+            <div className="flex space-x-4">
             <h4 className="font-bold text-xl uppercase">
-                Welcome, USER ID: {localStorageValue}
+                Welcome, USER ID: {authCookieValue}
             </h4>
+            <Button onClick={handleLogout} label="logout" />
+            </div>
         );
     }
 
     return (
-        <form className="flex  w-1/2 space-x-2">
+        <form className="flex items-center w-1/2 space-x-2">
             <InputField
                 name="user"
                 handleChange={handleChange}
-                label="USER NAME"
+                label="ID"
                 className="min-h-10"
             />
             <Button
