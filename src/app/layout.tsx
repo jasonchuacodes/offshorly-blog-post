@@ -3,6 +3,7 @@ import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
 import ReactQueryProvider from './ReactQueryProvider';
 import LinkButton from '../components/base/link-button';
+import { CookiesProvider } from 'next-client-cookies/server';
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -30,7 +31,7 @@ export default function RootLayout({
                     </div>
 
                     <main className="flex flex-col items-center w-full max-w-[640px] py-16 space-y-8 mb-10">
-                        {children}
+                        <CookiesProvider>{children}</CookiesProvider>
                     </main>
                 </body>
             </html>

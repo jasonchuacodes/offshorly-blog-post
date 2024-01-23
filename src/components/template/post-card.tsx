@@ -16,7 +16,6 @@ function PostCard(props: PostDetailProps) {
     const { removePost, editPost } = PostApi;
 
     const handleDelete = () => {
-        console.log(id);
         removePost(id);
         alert(`Successfully deleted user: ${id}`);
         if (!!refetch) {

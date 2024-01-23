@@ -3,38 +3,46 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import UserApi from '../../services/api/userApi';
-import { useCookies } from 'next-client-cookies';
 import Button from '../../components/base/button';
 import { UserProps } from '../../components/base/post';
 import InputField from '../../components/base/input-field';
+import { useCookies } from 'next-client-cookies';
 
 const AuthPage = () => {
-    const { getUser } = UserApi;
+    const [authId, setAuthId] = useState<string>('');
+    const [_authUser, setAuthUser] = useState<UserProps>();
+
+    const cookies = useCookies();
     const router = useRouter();
 
-    const [_authUser, setAuthUser] = useState<UserProps>();
-    const cookies = useCookies();
-
-    const handleLogout = () => {
-        cookies.remove('auth-id');
-    };
-
-    const [authId, setAuthId] = useState<string>('');
+    const { getUser } = UserApi;
 
     const handleChange = (e: any) => {
         const { value } = e.target;
         setAuthId(value);
     };
 
-    const handleSubmit = (e: any) => {
+    const handleLogin = (e: any) => {
         e.preventDefault();
-        cookies.set('auth-id', authId);
+        if (typeof window !== 'undefined') {
+            cookies.set('auth-id', authId);
 
-        getUser(Number(authId)).then((data) => {
-            setAuthUser(data);
-        });
+            getUser(Number(authId))
+                .then((data) => {
+                    setAuthUser(data);
+                    router.push('/');
+                })
+                .catch((e) => {
+                    alert(e.message);
+                });
+        }
+    };
 
-        router.push('/');
+    const handleLogout = () => {
+        if (typeof window !== 'undefined') {
+            cookies.remove('auth-id');
+            alert('Successfully logged out');
+        }
     };
 
     return (
@@ -46,7 +54,7 @@ const AuthPage = () => {
                 className="flex h-full max-w-20"
             />
             <Button
-                onClick={handleSubmit}
+                onClick={handleLogin}
                 label="login"
                 className="flex items-center h-full"
             />
