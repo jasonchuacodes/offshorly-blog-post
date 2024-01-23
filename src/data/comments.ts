@@ -1,4 +1,4 @@
-import { CommentProps } from "../app/components/base/comment";
+import { CommentProps } from "../components/base/comment";
 
 export const comments: CommentProps[] = [
     {
