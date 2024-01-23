@@ -14,8 +14,6 @@ const UserPage = () => {
         queryFn: getPosts,
     });
 
-    console.log(posts);
-
     if (isLoading || !posts) {
         return <div>...Loading</div>;
     }
