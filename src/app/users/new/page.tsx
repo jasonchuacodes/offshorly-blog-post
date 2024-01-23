@@ -5,7 +5,11 @@ import InputField from '../../../components/base/input-field';
 import Button from '../../../components/base/button';
 import React, { useState } from 'react';
 
+import { useRouter } from 'next/navigation';
+
 const CreateUserPage = () => {
+    const router = useRouter();
+
     const { creatUser } = UserApi;
 
     const initialUserState = {
@@ -20,10 +24,12 @@ const CreateUserPage = () => {
         setUser((prev) => ({ ...prev, [name]: value }));
     };
 
-    const handleClick = (e: any) => {
+    const handleSubmit = (e: any) => {
         e.preventDefault();
 
         if (user !== initialUserState) creatUser(user);
+        
+        router.push('/users');
     };
 
     return (
@@ -43,7 +49,7 @@ const CreateUserPage = () => {
                     className="min-h-10"
                 />
                 <Button
-                    onClick={handleClick}
+                    onClick={handleSubmit}
                     label="Create user"
                     className="py-2 !text-base"
                 />

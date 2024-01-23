@@ -29,8 +29,8 @@ const PostPage = ({ params }: { params: { id: string } }) => {
         <>
             <div>{post.post}</div>
             <div>
-                {post.comments?.map(({ id, comment }) => {
-                    return <div key={id}>{comment}</div>;
+                {post.comments?.map(({ comment }, index) => {
+                    return <div key={index}>{comment}</div>;
                 })}
             </div>
         </>
